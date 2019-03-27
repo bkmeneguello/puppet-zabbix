@@ -39,7 +39,11 @@ class zabbix::repo (
         $majorrelease = '6'
       }
       'Amazon'        : {
-        $majorrelease = '6'
+        if $facts['os']['release']['major'] == '2' {
+          $majorrelease = '7'
+        } else {
+          $majorrelease = '6'
+        }
       }
       'oraclelinux' : {
         $majorrelease = $facts['os']['release']['major']
